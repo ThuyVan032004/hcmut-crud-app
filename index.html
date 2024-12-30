@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do An Tong Hop</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        table {
+            width: 100%;
+            /* border-collapse: collapse; */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <button id="openFormBtn">Đăng nhập</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-container">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>PersonType</th>
+                        <th>NameStyle</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>EmailPromotion</th>
+                        <th>AddressLine1</th>
+                        <th>City</th>
+                        <th>State Province</th>
+                        <th>Country Region</th>
+                        <th>PostalCode</th>
+                        <th>EmailAddress</th>
+                        <th>Address Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dữ liệu sẽ được thêm từ APIAPI -->
+
+                </tbody>
+            </table>
+            <button id="addRowBtn" class="add-btn">Thêm hàng mới</button>
+        </div>
+    </main>
+    <div class="form-container" id="formContainer">
+        <div class="form-header">
+            <button class="tab-link" onclick="openTab(event, 'login')" id="defaultTab">Đăng nhập</button>
+            <button class="tab-link" onclick="openTab(event, 'register')">Đăng ký</button>
+            <span class="close-btn" onclick="closeForm()">&times;</span>
+        </div>
+
+        <div class="tab-content active" id="login">
+            <form>
+                <input type="text" placeholder="Tài khoản" required>
+                <input type="password" placeholder="Mật khẩu" required>
+                <button type="submit" class="btn red">Đăng nhập</button>
+            </form>
+        </div>
+
+        <div class="tab-content" id="register">
+            <form>
+                <input type="text" placeholder="Tài khoản" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Mật khẩu" required>
+                <input type="password" placeholder="Xác nhận mật khẩu" required>
+                <button type="submit" class="btn red">Đăng ký</button>
+            </form>
+        </div>
+
+    </div>
+    <!-- Form để thêm hàng mới -->
+    <div id="addRowForm" class="form-container">
+        <div class="form-header">
+            <h3>Thêm hàng mới</h3>
+            <span class="close-btn" onclick="closeForm()">&times;</span>
+        </div>
+        <form id="newRowForm">
+            <input type="text" id="PersonType" placeholder="PersonType" required>
+            <input type="text" id="NameStyle" placeholder="NameStyle" required>
+            <input type="text" id="FirstName" placeholder="FirstName" required>
+            <input type="text" id="LastName" placeholder="LastName" required>
+            <input type="text" id="EmailPromotion" placeholder="EmailPromotion" required>
+            <input type="email" id="EmailAddress" placeholder="EmailAddress" required>
+            <input type="text" id="AddressLine1" placeholder="AddressLine1" required>
+            <input type="text" id="City" placeholder="City" required>
+            <input type="text" id="StateProvinceName" placeholder="StateProvinceName" required>
+            <input type="text" id="AddressType" placeholder="AddressType" required>
+            <input type="text" id="PostalCode" placeholder="PostalCode" required>
+            <button type="submit" class="btn blue" onclick="addCustomer(event)">Thêm</button>
+        </form>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

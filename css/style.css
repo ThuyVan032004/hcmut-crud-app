@@ -1,0 +1,326 @@
+/* Header */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-top {
+    display: flex;
+    justify-content: flex-end; /* Đẩy nút đăng nhập sang phải */
+    align-items: center;
+}
+
+header button {
+    font-size: 16px;
+    padding: 8px 15px;
+    border: none;
+    background-color: white;
+    color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header button:hover {
+    background-color: #f1f1f1;
+}
+
+/* Thanh tìm kiếm */
+.search-container {
+    display: flex;
+    justify-content: center; /* Căn giữa khung tìm kiếm */
+    align-items: center;
+    margin-top: 10px; /* Khoảng cách giữa khung tìm kiếm và nút đăng nhập */
+}
+
+.search-container input {
+    width: 50%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.search-container button {
+    padding: 10px 20px;
+    background-color: white;
+    color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #f1f1f1;
+}
+
+/* Nội dung chính */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.content-container {
+    width: 100%;
+    max-width: 1400px;
+    border: 1px solid #ddd;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background-color: #0056b3; /* Chỉnh lại màu xanh đậm hơn */
+    color: white;
+    font-weight: bold; /* Làm chữ đậm */
+    text-align: center; /* Căn giữa tiêu đề */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #e9e9e9; /* Chỉnh màu khi hover */
+}
+/* Nút Thêm hàng mới */
+#addRowBtn {
+    display: inline-block;
+    margin-top: 10px; /* Khoảng cách phía trên nút */
+    float: right; /* Đẩy nút về phía bên phải */
+    padding: 8px 15px;
+    background-color: #008CBA; /* Màu xanh dương */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Đảm bảo content-container không bị lỗi layout khi float */
+.content-container::after {
+    content: "";
+    display: block;
+    clear: both; /* Clear float */
+}
+
+/* Thu nhỏ khoảng cách giữa nút và phân trang */
+/*xóa hàng */
+button {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+}
+button.edit-btn {
+    background-color: #4CAF50; /* Màu xanh */
+    color: white;
+}
+button.delete-btn {
+    background-color: #f44336; /* Màu đỏ */
+    color: white;
+}
+button.add-btn {
+    background-color: #008CBA; /* Màu xanh dương */
+    color: white;
+}
+
+/* Phân trang */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.pagination a, .pagination span {
+    display: inline-block;
+    padding: 8px 12px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.pagination a:hover, .pagination span.active {
+    background-color: #007BFF;
+    color: #fff;
+    border-color: #007BFF;
+}
+
+.pagination span.disabled {
+    color: #ccc;
+    cursor: default;
+    border-color: #ddd;
+}
+
+/* Form */
+.form-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    animation: fadeIn 0.3s;
+}
+
+/* Form thêm hàng */
+/* Form thêm hàng mới */
+#addRowForm {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 600px;
+    max-height: 80vh; /* Chiều cao tối đa là 80% màn hình */
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto; /* Thêm thanh cuộn dọc */
+}
+
+/* Tiêu đề và nút đóng trong form */
+#addRowForm .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+#addRowForm .close-btn {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Các trường nhập liệu */
+#addRowForm form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Nút thêm */
+#addRowForm form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+}
+
+#addRowForm form button:hover {
+    opacity: 0.9;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.tab-link {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    border-bottom: 2px solid transparent;
+    font-size: 16px;
+}
+
+.tab-link.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+
+.close-btn {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn.red {
+    background-color: #ff5722;
+    color: white;
+}
+
+.btn.blue {
+    background-color: #4267B2;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
