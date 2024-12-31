@@ -62,8 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("EmailPromotion").value,
             document.getElementById("AddressLine1").value,
             document.getElementById("City").value,
-            document.getElementById("StateProvince").value,
-            document.getElementById("CountryRegion").value,
+            document.getElementById("StateProvinceName").value,
             document.getElementById("PostalCode").value,
             document.getElementById("EmailAddress").value,
             document.getElementById("AddressType").value
@@ -120,8 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
             EmailPromotion: document.getElementById("EmailPromotion").value,
             AddressLine1: document.getElementById("AddressLine1").value,
             City: document.getElementById("City").value,
-            StateProvince: document.getElementById("StateProvince").value,
-            CountryRegion: document.getElementById("CountryRegion").value,
+            StateProvinceName: document.getElementById("StateProvinceName").value,
             PostalCode: document.getElementById("PostalCode").value,
             EmailAddress: document.getElementById("EmailAddress").value,
             AddressType: document.getElementById("AddressType").value
@@ -226,11 +224,10 @@ document.addEventListener("DOMContentLoaded", function () {
             EmailPromotion: parseInt(prompt('Nhập Email Promotion mới (0 hoặc 1):', oldData[4])), // Chuyển thành số
             AddressLine1: prompt('Nhập Address Line 1 mới:', oldData[5]),
             City: prompt('Nhập City mới:', oldData[6]),
-            StateProvince: prompt('Nhập State Province mới:', oldData[7]),
-            CountryRegion: prompt('Nhập Country Region mới:', oldData[8]),
-            PostalCode: prompt('Nhập Postal Code mới:', oldData[9]),
-            EmailAddress: prompt('Nhập Email Address mới:', oldData[10]),
-            AddressType: prompt('Nhập Address Type mới:', oldData[11])
+            StateProvinceName: prompt('Nhập State Province Name mới:', oldData[7]),
+            PostalCode: prompt('Nhập Postal Code mới:', oldData[8]),
+            EmailAddress: prompt('Nhập Email Address mới:', oldData[9]),
+            AddressType: prompt('Nhập Address Type mới:', oldData[10])
         };
     
         // Kiểm tra dữ liệu nhập vào
@@ -287,7 +284,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 customer.AddressLine1,
                 customer.City,
                 customer.StateProvinceName,
-                customer.CountryRegionName,
                 customer.PostalCode,
                 customer.EmailAddress,
                 customer.AddressType
