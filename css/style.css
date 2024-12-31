@@ -66,8 +66,8 @@ main {
 }
 
 .content-container {
-    width: 100%;
-    max-width: 1400px;
+    width: 150vw;
+    /* max-width: 1400px; */
     border: 1px solid #ddd;
     background-color: white;
     border-radius: 10px;

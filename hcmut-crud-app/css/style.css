@@ -68,7 +68,7 @@ main {
 /* Đảm bảo bảng nằm gọn trong container */
 .content-container {
     width: 100%;
-    max-width: 800px; /* Giới hạn độ rộng bảng */
+    max-width: 900px;
     border: 1px solid #ddd;
     background-color: white;
     border-radius: 10px;
