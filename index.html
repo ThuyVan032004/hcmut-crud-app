@@ -6,18 +6,6 @@
     <title>Do An Tong Hop</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        table {
-            width: 100%;
-            /* border-collapse: collapse; */
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
     </style>
 </head>
 <body>
@@ -39,11 +27,11 @@
                         <th>EmailPromotion</th>
                         <th>AddressLine1</th>
                         <th>City</th>
-                        <th>State Province</th>
-                        <th>Country Region</th>
+                        <th>StateProvince</th>
+                        <th>CountryRegion</th>
                         <th>PostalCode</th>
                         <th>EmailAddress</th>
-                        <th>Address Type</th>
+                        <th>AddressType</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -92,13 +80,14 @@
             <input type="text" id="NameStyle" placeholder="NameStyle" required>
             <input type="text" id="FirstName" placeholder="FirstName" required>
             <input type="text" id="LastName" placeholder="LastName" required>
-            <input type="text" id="EmailPromotion" placeholder="EmailPromotion" required>
-            <input type="email" id="EmailAddress" placeholder="EmailAddress" required>
+            <input type="text" id="EmailPromotion" placeholder="EmailPromotion" required>          
             <input type="text" id="AddressLine1" placeholder="AddressLine1" required>
             <input type="text" id="City" placeholder="City" required>
-            <input type="text" id="StateProvinceName" placeholder="StateProvinceName" required>
-            <input type="text" id="AddressType" placeholder="AddressType" required>
+            <input type="text" id="StateProvince" placeholder="StateProvince" required>
+            <input type="text" id="CountryRegion" placeholder="CountryRegion" required>
             <input type="text" id="PostalCode" placeholder="PostalCode" required>
+            <input type="email" id="EmailAddress" placeholder="EmailAddress" required>
+            <input type="text" id="AddressType" placeholder="AddressType" required>
             <button type="submit" class="btn blue" onclick="addCustomer(event)">Thêm</button>
         </form>
     </div>

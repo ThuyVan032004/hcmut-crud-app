@@ -60,12 +60,13 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("FirstName").value,
             document.getElementById("LastName").value,
             document.getElementById("EmailPromotion").value,
-            document.getElementById("EmailAddress").value,
             document.getElementById("AddressLine1").value,
             document.getElementById("City").value,
-            document.getElementById("StateProvinceName").value,
-            document.getElementById("AddressType").value,
-            document.getElementById("PostalCode").value
+            document.getElementById("StateProvince").value,
+            document.getElementById("CountryRegion").value,
+            document.getElementById("PostalCode").value,
+            document.getElementById("EmailAddress").value,
+            document.getElementById("AddressType").value
         ];
 
         // Thêm dữ liệu vào bảng
@@ -117,12 +118,13 @@ document.addEventListener("DOMContentLoaded", function () {
             FirstName: document.getElementById("FirstName").value,
             LastName: document.getElementById("LastName").value,
             EmailPromotion: document.getElementById("EmailPromotion").value,
-            EmailAddress: document.getElementById("EmailAddress").value,
             AddressLine1: document.getElementById("AddressLine1").value,
             City: document.getElementById("City").value,
-            StateProvinceName: document.getElementById("StateProvinceName").value,
-            AddressType: document.getElementById("AddressType").value,
-            PostalCode: document.getElementById("PostalCode").value
+            StateProvince: document.getElementById("StateProvince").value,
+            CountryRegion: document.getElementById("CountryRegion").value,
+            PostalCode: document.getElementById("PostalCode").value,
+            EmailAddress: document.getElementById("EmailAddress").value,
+            AddressType: document.getElementById("AddressType").value
         };
 
         try {
@@ -176,7 +178,97 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error('Lỗi khi lấy danh sách khách hàng:', error);
         }
     }
+    // Hàm xóa khách hàng
+    async function deleteCustomer(businessEntityID) {
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/customer/deleteCustomer/${businessEntityID}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log(`Xóa khách hàng ${businessEntityID} thành công:`, data);
+
+            // Refresh the customer table after deletion
+            await getAllCustomers();
+        } catch (error) {
+            console.error(`Lỗi khi xóa khách hàng ${businessEntityID}:`, error);
+            alert('Có lỗi xảy ra khi xóa khách hàng');
+        }
+    }
+
+    // Hàm chỉnh sửa thông tin khách hàng
+    async function editCustomer(businessEntityID) {
+        console.log('BusinessEntityID:', businessEntityID);
     
+        // Lấy dữ liệu cũ từ bảng
+        const row = document.querySelector(`#dataTable tbody tr[data-id='${businessEntityID}']`);
+        if (!row) {
+            console.error(`Không tìm thấy hàng với BusinessEntityID: ${businessEntityID}`);
+            alert('Hàng không tồn tại!');
+            return;
+        }
+    
+        const oldData = Array.from(row.querySelectorAll('td')).slice(0, -1).map(td => td.textContent);
+    
+        // Hiển thị form nhập dữ liệu mới
+        const updatedData = {
+            PersonType: prompt('Nhập Person Type mới:', oldData[0]),
+            NameStyle: prompt('Nhập Name Style mới (true/false):', oldData[1]).toLowerCase() === 'true', // Chuyển thành boolean
+            FirstName: prompt('Nhập First Name mới:', oldData[2]),
+            LastName: prompt('Nhập Last Name mới:', oldData[3]),
+            EmailPromotion: parseInt(prompt('Nhập Email Promotion mới (0 hoặc 1):', oldData[4])), // Chuyển thành số
+            AddressLine1: prompt('Nhập Address Line 1 mới:', oldData[5]),
+            City: prompt('Nhập City mới:', oldData[6]),
+            StateProvince: prompt('Nhập State Province mới:', oldData[7]),
+            CountryRegion: prompt('Nhập Country Region mới:', oldData[8]),
+            PostalCode: prompt('Nhập Postal Code mới:', oldData[9]),
+            EmailAddress: prompt('Nhập Email Address mới:', oldData[10]),
+            AddressType: prompt('Nhập Address Type mới:', oldData[11])
+        };
+    
+        // Kiểm tra dữ liệu nhập vào
+        if (Object.values(updatedData).some(value => value === null || value === '')) {
+            alert('Thông tin nhập không đầy đủ hoặc bị hủy.');
+            return;
+        }
+    
+        try {
+            console.log('Dữ liệu gửi đi:', updatedData); // Log dữ liệu gửi đi
+    
+            const response = await fetch(`http://127.0.0.1:8000/api/customer/updateCustomer/${businessEntityID}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedData)
+            });
+    
+            if (!response.ok) {
+                const errorText = await response.text(); // Lấy thông tin lỗi chi tiết
+                console.error(`Lỗi HTTP! Status: ${response.status}`, errorText);
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            console.log(`Chỉnh sửa khách hàng ${businessEntityID} thành công:`, data);
+    
+            // Làm mới danh sách khách hàng
+            await getAllCustomers();
+        } catch (error) {
+            console.error(`Lỗi khi chỉnh sửa khách hàng ${businessEntityID}:`, error.message);
+            alert('Có lỗi xảy ra khi chỉnh sửa khách hàng. Vui lòng kiểm tra lại.');
+        }
+    }
+    
+    
+
 
     function updateTable(customers) {
         const tableBody = document.querySelector("#dataTable tbody");
@@ -185,6 +277,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const customer = customers[i];
             const row = document.createElement('tr');
             // Extracting relevant fields from the customer object
+            row.setAttribute('data-id', customer.BusinessEntityID);
             const rowData = [
                 customer.PersonType,
                 customer.NameStyle,

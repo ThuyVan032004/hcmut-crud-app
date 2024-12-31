@@ -65,36 +65,126 @@ main {
     padding: 20px;
 }
 
+/* Đảm bảo bảng nằm gọn trong container */
 .content-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: 800px; /* Giới hạn độ rộng bảng */
     border: 1px solid #ddd;
     background-color: white;
     border-radius: 10px;
+    padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Table Styling */
+/* Thiết lập bảng */
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate; /* Sử dụng chế độ 'separate' để phân cách cột */
+    border-spacing: 0; /* Loại bỏ khoảng cách giữa các cột */
     margin-top: 20px;
+    table-layout: fixed; /* Đảm bảo cột có độ rộng cố định */
 }
 
+
+/* Điều chỉnh tiêu đề bảng */
 th {
-    background-color: #0056b3; /* Chỉnh lại màu xanh đậm hơn */
-    color: white;
-    font-weight: bold; /* Làm chữ đậm */
-    text-align: center; /* Căn giữa tiêu đề */
+    background-color: #0056b3; /* Màu nền tiêu đề */
+    color: white; /* Màu chữ tiêu đề */
+    font-weight: bold; /* Làm đậm chữ */
+    text-align: left; /* Căn lề trái */
+    padding: 8px; /* Khoảng cách bên trong ô */
+    word-wrap: break-word; /* Cho phép ngắt dòng khi dài */
+    white-space: normal; /* Tự động xuống dòng */
+    overflow: hidden; /* Ẩn phần tràn ra */
+    text-overflow: ellipsis; /* Thêm "..." nếu quá dài */
+    line-height: 1.5; /* Khoảng cách dòng để dễ đọc */
+    height: auto; /* Tự động điều chỉnh chiều cao */
+    max-width: 150px; /* Đặt giới hạn độ rộng tối đa */
 }
 
-tr:nth-child(even) {
+/* Cấu hình bảng */
+table {
+    width: 100%; /* Bảng chiếm toàn bộ chiều rộng container */
+    border-collapse: collapse;
+    table-layout: fixed; /* Cố định độ rộng các cột */
+}
+
+/* Ô dữ liệu */
+td {
+    text-align: left; /* Căn lề trái nội dung */
+    word-wrap: break-word; /* Ngắt dòng khi dài */
+    white-space: normal; /* Tự động xuống dòng */
+    overflow: hidden; /* Ẩn phần tràn */
+    padding: 8px; /* Khoảng cách bên trong ô */
+}
+
+/* Đường kẻ giữa các cột */
+th, td {
+    border-right: 1px solid #ddd; /* Đường phân cách giữa các cột */
+}
+
+/* Loại bỏ đường phân cách cuối cùng */
+th:last-child, td:last-child {
+    border-right: none;
+}
+
+/* Hiệu ứng hover */
+tr:hover {
     background-color: #f9f9f9;
 }
 
-tr:hover {
-    background-color: #e9e9e9; /* Chỉnh màu khi hover */
+
+
+
+/* Định nghĩa độ rộng từng cột (có thể điều chỉnh tùy ý) */
+th:nth-child(1), td:nth-child(1) {
+    width: 5%; /* PersonType */
 }
+
+th:nth-child(2), td:nth-child(2) {
+    width: 7%; /* NameStyle */
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 10%; /* FirstName */
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 10%; /* LastName */
+}
+
+th:nth-child(5), td:nth-child(5) {
+    width: 8%; /* EmailPromotion */
+}
+
+th:nth-child(6), td:nth-child(6) {
+    width: 15%; /* EmailAddress */
+}
+
+th:nth-child(7), td:nth-child(7) {
+    width: 15%; /* AddressLine1 */
+}
+
+th:nth-child(8), td:nth-child(8) {
+    width: 10%; /* City */
+}
+
+th:nth-child(9), td:nth-child(9) {
+    width: 10%; /* StateProvinceName */
+}
+
+th:nth-child(10), td:nth-child(10) {
+    width: 8%; /* AddressType */
+}
+
+th:nth-child(11), td:nth-child(11) {
+    width: 10%; /* PostalCode */
+}
+
+th:nth-child(12), td:nth-child(12) {
+    width: 10%; /* Actions */
+}
+
 /* Nút Thêm hàng mới */
 #addRowBtn {
     display: inline-block;
