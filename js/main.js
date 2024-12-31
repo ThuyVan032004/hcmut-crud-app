@@ -121,7 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
             AddressLine1: document.getElementById("AddressLine1").value,
             City: document.getElementById("City").value,
             StateProvince: document.getElementById("StateProvince").value,
-            CountryRegion: document.getElementById("CountryRegion").value,
             PostalCode: document.getElementById("PostalCode").value,
             EmailAddress: document.getElementById("EmailAddress").value,
             AddressType: document.getElementById("AddressType").value
